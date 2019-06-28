@@ -11,8 +11,8 @@ pipeline {
 		package_version = readMavenPom().getVersion()
 		dockerRegistry = "962109799108.dkr.ecr.eu-west-1.amazonaws.com"
 		DOCKER_CACHE_IMAGE_VERSION = "latest"
-		dockerRepo = "springpetclinicb"
-		applicationName = 'springpetclinicb' // Same as artifactId in pom.xml
+		dockerRepo = "springpetclinicc"
+		applicationName = 'springpetclinicc' // Same as artifactId in pom.xml
 		AWS_REGION = "eu-west-1"
 		AWS_ACCOUNT_ID = "962109799108"
 		SONAR_ENDPOINT = "http://34.242.31.110:9000"
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo 'Building ...'
 				//sh 'mvn -T 10 -Dmaven.test.skip=true clean install'
-				//sh 'mvn -T 1C -Dmaven.test.skip=true dependency:purge-local-repository clean package'
+				//sh 'mvn -T 1C -Dmaven.test.skip=true dependency:purge-local-repository'
 				sh 'mvn -T 1C -Dmaven.test.skip=true clean package'
             }
         }
