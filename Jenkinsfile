@@ -2,8 +2,8 @@ pipeline {
 	agent { 
         node {
             //label '!master'
-			//label 'master'
-			label 'slavespot'
+			label 'master'
+			//label 'slavespot'
         }
     }
 	
@@ -20,7 +20,7 @@ pipeline {
 		//EC2_LOCAL_MAVEN_DEPENDENCIES_DIRECTORY = "/var/lib/jenkins"
 		S3_BUCKET_MAVEN_DEPENDENCIES = "s3://jenkinsspotfleetmavencache/Jenkins-Master-slave-SimpleAPI/.m2/"
     }
-	
+
     stages {
 /*
 		stage('Download dependencies from S3') {
@@ -83,12 +83,6 @@ pipeline {
 				sh 'mvn sonar:sonar -Dsonar.host.url=$SONAR_ENDPOINT' // -Dsonar.dependencyCheck.reportPath=target/dependency-check-report.xml'
             }
         }
-		stage('Sonar 3') {
-            steps {
-                echo 'Check Code Quality ...'
-				sh 'mvn sonar:sonar -Dsonar.host.url=$SONAR_ENDPOINT' // -Dsonar.dependencyCheck.reportPath=target/dependency-check-report.xml'
-            }
-        }
 /*		
         stage('Contract testing') {
             steps {
@@ -111,7 +105,7 @@ pipeline {
 				sh 'docker push ${dockerRegistry}/${dockerRepo}:${package_version}'
             }
         }
-		
+
 		stage('Dependencies sync') {
             steps {
 				echo 'Copying the maven dependencies to an S3 bucket ...'
@@ -119,5 +113,6 @@ pipeline {
 			}
         }
 */
-	}
+    }
+
 }
